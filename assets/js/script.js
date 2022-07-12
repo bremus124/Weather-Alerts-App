@@ -1,104 +1,42 @@
-// @ts-nocheck TODO remove when fixed
-let map: google.maps.Map;
-let marker: google.maps.Marker;
-let geocoder: google.maps.Geocoder;
-let responseDiv: HTMLDivElement;
-let response: HTMLPreElement;
-
-function initMap(): void {
-  map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
-    center: { lat: -34.397, lng: 150.644 },
-    mapTypeControl: false,
+    center: { lat: 40.731, lng: -73.997 },
   });
-  geocoder = new google.maps.Geocoder();
+  const geocoder = new google.maps.Geocoder();
+  const infowindow = new google.maps.InfoWindow();
 
-  const inputText = document.createElement("input");
-
-  inputText.type = "text";
-  inputText.placeholder = "Enter a location";
-
-  const submitButton = document.createElement("input");
-
-  submitButton.type = "button";
-  submitButton.value = "Geocode";
-  submitButton.classList.add("button", "button-primary");
-
-  const clearButton = document.createElement("input");
-
-  clearButton.type = "button";
-  clearButton.value = "Clear";
-  clearButton.classList.add("button", "button-secondary");
-
-  response = document.createElement("pre");
-  response.id = "response";
-  response.innerText = "";
-
-  responseDiv = document.createElement("div");
-  responseDiv.id = "response-container";
-  responseDiv.appendChild(response);
-
-  const instructionsElement = document.createElement("p");
-
-  instructionsElement.id = "instructions";
-
-  instructionsElement.innerHTML =
-    "<strong>Instructions</strong>: Enter an address in the textbox to geocode or click on the map to reverse geocode.";
-
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputText);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(submitButton);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-  map.controls[google.maps.ControlPosition.LEFT_TOP].push(instructionsElement);
-  map.controls[google.maps.ControlPosition.LEFT_TOP].push(responseDiv);
-
-  marker = new google.maps.Marker({
-    map,
+  document.getElementById("submit").addEventListener("click", () => {
+    geocodeLatLng(geocoder, map, infowindow);
   });
-
-  map.addListener("click", (e: google.maps.MapMouseEvent) => {
-    geocode({ location: e.latLng });
-  });
-
-  submitButton.addEventListener("click", () =>
-    geocode({ address: inputText.value })
-  );
-
-  clearButton.addEventListener("click", () => {
-    clear();
-  });
-
-  clear();
 }
 
-function clear() {
-  marker.setMap(null);
-  responseDiv.style.display = "none";
-}
-
-function geocode(request: google.maps.GeocoderRequest): void {
-  clear();
+function geocodeLatLng(geocoder, map, infowindow) {
+  const input = document.getElementById("latlng").value;
+  const latlngStr = input.split(",", 2);
+  const latlng = {
+    lat: parseFloat(latlngStr[0]),
+    lng: parseFloat(latlngStr[1]),
+  };
 
   geocoder
-    .geocode(request)
-    .then((result) => {
-      const { results } = result;
+    .geocode({ location: latlng })
+    .then((response) => {
+      if (response.results[0]) {
+        map.setZoom(11);
 
-      map.setCenter(results[0].geometry.location);
-      marker.setPosition(results[0].geometry.location);
-      marker.setMap(map);
-      responseDiv.style.display = "block";
-      response.innerText = JSON.stringify(result, null, 2);
-      return results;
+        const marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+        });
+
+        infowindow.setContent(response.results[0].formatted_address);
+        infowindow.open(map, marker);
+      } else {
+        window.alert("No results found");
+      }
     })
-    .catch((e) => {
-      alert("Geocode was not successful for the following reason: " + e);
-    });
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
 }
 
-declare global {
-  interface Window {
-    initMap: () => void;
-  }
-}
 window.initMap = initMap;
-export {};
