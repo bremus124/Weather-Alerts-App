@@ -69,4 +69,18 @@ function initMap() {
     });
 }
 
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '18daf76251msh7e93ac0397bbe70p1b0775jsn693b82572462',
+		'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
+	}
+};
+
+
+fetch('https://weatherbit-v1-mashape.p.rapidapi.com/alerts?lat=33.16&lon=-89.62', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
 window.initMap = initMap;
