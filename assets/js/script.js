@@ -73,7 +73,10 @@ function initMap() {
         document.getElementById("country").innerHTML =
           place.address_components[i].long_name;
       }
+
     }
+
+    document.getElementById("alertsList").innerHTML = "";
     document.getElementById("location").innerHTML = place.formatted_address;
     document.getElementById("lat").innerHTML = place.geometry.location.lat();
     document.getElementById("lon").innerHTML = place.geometry.location.lng();
@@ -96,9 +99,7 @@ function initMap() {
         document.getElementById("alertsList").innerHTML =
           response.alerts[0].severity +
           " " +
-          response.alerts[0].title +
-          " " +
-          response.alerts[0].expires_utc;
+          response.alerts[0].title;
         // document.getElementById("weather_desc").innerHTML =
         // response.data[0].weather.description;
       })
