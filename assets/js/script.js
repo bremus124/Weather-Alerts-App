@@ -21,6 +21,7 @@ function initMap() {
     marker.setVisible(false);
     var place = autocomplete.getPlace();
     console.log({ place });
+    localStorage.setItem("place",place.formatted_address);
     if (!place.geometry) {
       window.alert("Autocomplete's returned place contains no geometry");
       return;
@@ -100,8 +101,12 @@ function initMap() {
           response.alerts[0].severity +
           " " +
           response.alerts[0].title;
-        // document.getElementById("weather_desc").innerHTML =
-        // response.data[0].weather.description;
+
+          var sevAlert = response.alerts[0].severity;
+          var titleAlert = response.alerts[0].title;
+
+          localStorage.setItem("severity", sevAlert);
+          localStorage.setItem("title", titleAlert);
       })
       .catch((err) => console.error(err));
   });
