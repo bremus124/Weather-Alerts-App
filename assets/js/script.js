@@ -1,3 +1,8 @@
+var alertContainer = document.getElementById("alertsList");
+var recentSearches = document.getElementById("recentSearches");
+let searches = localStorage.getItem("searchHistory");
+searches = searches ? JSON.parse(searches) : [];
+console.log(alertContainer);
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
@@ -21,7 +26,9 @@ function initMap() {
     marker.setVisible(false);
     var place = autocomplete.getPlace();
     console.log({ place });
-    localStorage.setItem("place",place.formatted_address);
+    searches.unshift(place.formatted_address);
+    localStorage.setItem("searchHistory", JSON.stringify(searches));
+    localStorage.setItem("place", place.formatted_address);
     if (!place.geometry) {
       window.alert("Autocomplete's returned place contains no geometry");
       return;
@@ -74,10 +81,9 @@ function initMap() {
         document.getElementById("country").innerHTML =
           place.address_components[i].long_name;
       }
-
     }
 
-    document.getElementById("alertsList").innerHTML = "";
+    document.getElementById("alertsList").innerText = "";
     document.getElementById("location").innerHTML = place.formatted_address;
     document.getElementById("lat").innerHTML = place.geometry.location.lat();
     document.getElementById("lon").innerHTML = place.geometry.location.lng();
@@ -97,19 +103,34 @@ function initMap() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        document.getElementById("alertsList").innerHTML =
-          response.alerts[0].severity +
-          " " +
-          response.alerts[0].title;
+        if (response.alerts.length > 0) {
+          alertContainer.innerText =
+            response.alerts[0]?.severity + ": " + response.alerts[0]?.title;
+          // let h1 = `<h1>This is h1 heading</h1>
+          //         <h2>I am H2 </h2>`;
+          // alertContainer.innerHTML = h1;
+          alertContainer.classList.add("warning");
+        }
+        if (response.alerts.length === 0) {
+          alertContainer.innerText = "There area no alerts in this area";
+          alertContainer.classList.add("no-warning");
+        }
 
-          var sevAlert = response.alerts[0].severity;
-          var titleAlert = response.alerts[0].title;
+        var sevAlert = response.alerts[0].severity;
+        var titleAlert = response.alerts[0].title;
 
-          localStorage.setItem("severity", sevAlert);
-          localStorage.setItem("title", titleAlert);
+        localStorage.setItem("severity", sevAlert);
+        localStorage.setItem("title", titleAlert);
       })
       .catch((err) => console.error(err));
   });
 }
+recentSearches = `${searches.slice(0, 3).map((search) => {
+  let recentCity = document.createElement("p");
+  recentCity.classList.add("city");
+  recentCity.innerText = search;
+  recentSearches.appendChild(recentCity);
+  return recentSearches;
+})}`;
 
 window.initMap = initMap;
