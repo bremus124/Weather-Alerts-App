@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,13 @@
 
   <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script> -->
 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    
+
+
   <head>
     <title>Geocoding Service</title>
     <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -26,6 +34,7 @@
       </script>
       <!-playground-hide-end -->
   </head>
+
 
 <body>
   <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
@@ -67,6 +76,25 @@
   <script async
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap"></script>
   <script src="assets/js/script.js"></script>
+
+  <body>
+    <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+    <div id="map"></div>
+
+    <ul hidden class="geo-data">
+      <li>Full Address: <span id="location"></span></li>
+      <li>Country: <span id="country"></span></li>
+      <li>Latitude: <span id="lat"></span></li>
+      <li>Longitude: <span id="lon"></span></li>
+    </ul>
+
+    <div id="alertsList"></div>
+    <div id="recentSearches"></div>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap"></script>
+    <script src="assets/js/script.js"></script>
+    
+
 </body>
 
 </html>
