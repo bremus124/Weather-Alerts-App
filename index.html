@@ -7,57 +7,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
-  
 
-
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script> -->
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css"/>
-    
-
-
-  <head>
-    <title>Geocoding Service</title>
-    <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-      <! playground-hide -->
-    <!--<script> const process = { env: {} };
-        process.env.GOOGLE_MAPS_API_KEY =
-        "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
-      </script>
-      <!-playground-hide-end -->
-  </head>
-
+  <title>Geocoding Service</title>
+</head>
+<div class="full-width-banner blue lighten-2" alt="">
+  <h1>Don't Let Severe Weather Take You by Surprise</h1>
+</div>
 
 <body>
+  <div id="description">
+    <h3 class="description-title">Severe weather alerts for your exact location</h3>
+    <ul class="conditions" id="">
+      <li><i class="material-icons">air</i>Air Quality</li>
+      <li><i class="material-icons">storm</i>Thunderstorms</li>
+      <li><i class="material-icons">thermostat</i>Heat Advisories</li>
+      <li><i class="material-icons">severe_cold</i>Winter Storms</li>
+      <li><i class="material-icons">flood</i>Flood</li>
+    </ul>
+  </div>
+
   <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
   <div id="map"></div>
 
-  <ul hidden class="geo-data">
-    <li>Full Address: <span id="location"></span></li>
-    <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
-    <li>Country: <span id="country"></span></li>
-    <li>Latitude: <span id="lat"></span></li>
-    <li>Longitude: <span id="lon"></span></li>
-  </ul>
-
-
-  <!-- <table id="alertsTable">
-        <th>
-          <p>Weather condition</p>
-        </th>
-        <tbody id="alertsList">
-          <td id="weather_desc"></td>
-        </tbody>
-        
-      </table> -->
   <div id="alertsList"></div>
   <div id="recentSearches"></div>
 
@@ -71,29 +48,16 @@
     </div>
   </div>
 
-
+  <ul hidden class="geo-data">
+    <li>Full Address: <span id="location"></span></li>
+    <li>Country: <span id="country"></span></li>
+    <li>Latitude: <span id="lat"></span></li>
+    <li>Longitude: <span id="lon"></span></li>
+  </ul>
   <script async src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script async
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap"></script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap"></script>
   <script src="assets/js/script.js"></script>
 
-  <body>
-    <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
-    <div id="map"></div>
-
-    <ul hidden class="geo-data">
-      <li>Full Address: <span id="location"></span></li>
-      <li>Country: <span id="country"></span></li>
-      <li>Latitude: <span id="lat"></span></li>
-      <li>Longitude: <span id="lon"></span></li>
-    </ul>
-
-    <div id="alertsList"></div>
-    <div id="recentSearches"></div>
-
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap"></script>
-    <script src="assets/js/script.js"></script>
-    
 
 </body>
 

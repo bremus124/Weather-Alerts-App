@@ -7,23 +7,89 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ccc;
+  background-color: white;
+  font-family: 'Bebas Neue', cursive;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family:Bebas Neue;
   font-size: 18px;
   color: rgb(104, 104, 104);
 }
 
-form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  max-width: 400px;
-  padding: 20px;
+.full-width-banner {
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(7, 37, 89, 0.73)),url(../images/1.jpg);
+  margin-bottom: 20px;
+  opacity: 0.9;
+  display: flexbox;
+
+  
+  /*adding background to section
+          and animation named color-change*/
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  animation: color-change 10s linear infinite;
+  animation-delay: 1s;
 }
 
+/*adding rain img and making opacity 0*/
+.full-width-banner :before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background-image: url(../images/rain-300x300.png);
+  animation: rain 0.4s linear infinite;
+  opacity: 0;
+}
+
+@keyframes rain {
+  0% {
+    background-position: 0 0;
+    opacity: 1;
+  }
+
+  100% {
+    background-position: 8% 80%;
+    opacity: 1;
+  }
+}
+#description{
+background-color: white;
+padding: 20px;
+list-style-type: none;
+text-align: center;
+font-family: ;
+}
+
+.conditions li {
+display: inline; 
+padding-left: 20px;
+padding-right: 20px;
+}
+/* applying filter at different angle
+    on diffrent interval using keyframe*/
+@keyframes color-change {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+h1{
+  font-size: 95px;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 70px;
+  color: white;
+  font-family: 'Bebas Neue', cursive;
+}
 #searchInput {
   width: 70%;
   height: 1.3rem;
@@ -34,6 +100,7 @@ form {
   font-family: "monospace", sans-serif;
   font-size: 18px;
   border-radius: 2px;
+  margin-left:100px;
   background-color: white;
 }
 
@@ -103,6 +170,7 @@ img.powered-by-google {
 #alertsBtn {
   display: inline;
 }
+
 .warning {
   text-align: center;
   max-width: 600px;
@@ -111,6 +179,7 @@ img.powered-by-google {
   padding: 10px;
   background-color: yellow;
 }
+
 .no-warning {
   margin: auto;
   text-align: center;
@@ -122,6 +191,7 @@ img.powered-by-google {
   padding: 10px;
   background-color: rgb(77, 205, 77);
 }
+
 #recentSearches {
   margin: auto;
   flex-direction: column;
@@ -129,11 +199,12 @@ img.powered-by-google {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  background: whitesmoke;
+  background: white;
   height: auto;
   align-items: center;
   cursor: pointer;
 }
+
 .city {
   border: 1px solid black;
   width: fit-content;
