@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css"/>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script> -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+
+
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script> -->
 
   <head>
     <title>Geocoding Service</title>
     <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <! playground-hide -->
+      <! playground-hide -->
     <!--<script> const process = { env: {} };
-     process.env.GOOGLE_MAPS_API_KEY =
+        process.env.GOOGLE_MAPS_API_KEY =
         "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
-    </script>
-    <!-playground-hide-end -->
+      </script>
+      <!-playground-hide-end -->
   </head>
-  <body>
-    <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
-    <div id="map"></div>
 
-    <ul hidden class="geo-data">
-      <li>Full Address: <span id="location"></span></li>
-      <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
-      <li>Country: <span id="country"></span></li>
-      <li>Latitude: <span id="lat"></span></li>
-      <li>Longitude: <span id="lon"></span></li>
-    </ul>
+<body>
+  <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+  <div id="map"></div>
+
+  <ul hidden class="geo-data">
+    <li>Full Address: <span id="location"></span></li>
+    <!-- <li>Postal Code: <span id="postal_code"></span></li> -->
+    <li>Country: <span id="country"></span></li>
+    <li>Latitude: <span id="lat"></span></li>
+    <li>Longitude: <span id="lon"></span></li>
+  </ul>
 
 
-    <!-- <table id="alertsTable">
-      <th>
-        <p>Weather condition</p>
-      </th>
-      <tbody id="alertsList">
-        <td id="weather_desc"></td>
-      </tbody>
+  <!-- <table id="alertsTable">
+        <th>
+          <p>Weather condition</p>
+        </th>
+        <tbody id="alertsList">
+          <td id="weather_desc"></td>
+        </tbody>
+        
+      </table> -->
+  <div id="alertsList"></div>
+  <div id="recentSearches"></div>
 
-    </table> -->
-    <div id="alertsList"></div>
-    <div id="recentSearches"></div>
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap"></script>
-    <script src="assets/js/script.js"></script>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Oops!</h4>
+      <p>Please select a location from the dropdown list!</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap"></script>
+  <script src="assets/js/script.js"></script>
 </body>
+
 </html>

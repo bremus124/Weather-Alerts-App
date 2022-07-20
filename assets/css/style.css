@@ -24,7 +24,7 @@ form {
   padding: 20px;
 }
 
-input {
+#searchInput {
   width: 70%;
   height: 1.3rem;
   margin-top: 11px;
@@ -34,6 +34,7 @@ input {
   font-family: "monospace", sans-serif;
   font-size: 18px;
   border-radius: 2px;
+  background-color: white;
 }
 
 input[type="reset"] {
