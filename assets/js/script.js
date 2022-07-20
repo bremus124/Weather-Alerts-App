@@ -94,7 +94,7 @@ function initMap() {
     document.getElementById("location").innerHTML = place.formatted_address;
     document.getElementById("lat").innerHTML = place.geometry.location.lat();
     document.getElementById("lon").innerHTML = place.geometry.location.lng();
-    const options = {
+    var options = {
       method: "GET",
       headers: {
         "X-RapidAPI-Key": "18daf76251msh7e93ac0397bbe70p1b0775jsn693b82572462",
@@ -141,5 +141,13 @@ recentSearches = `${searches.slice(0, 3).map((search) => {
   recentSearches.appendChild(recentCity);
   return recentSearches;
 })}`;
+
+var pastSearchHandler = function(event){
+  var city = event.target.getAttribute("city")
+  if(city){
+      getCityWeather(city);
+      get5Day(city);
+  }
+}
 
 window.initMap = initMap;
