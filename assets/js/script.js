@@ -30,8 +30,15 @@ function initMap() {
     localStorage.setItem("searchHistory", JSON.stringify(searches));
     localStorage.setItem("place", place.formatted_address);
     if (!place.geometry) {
-      window.alert("Autocomplete's returned place contains no geometry");
+
+      var elem = document.querySelector('.modal');
+      var instance = M.Modal.init(elem, {});
+      instance.open();
+      // window.alert("Autocomplete's returned place contains no geometry");
       return;
+
+    // modal instead of alert
+    
     }
 
     // If the place has a geometry, then present it on a map.
