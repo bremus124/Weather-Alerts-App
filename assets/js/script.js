@@ -103,12 +103,14 @@ function initMap() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
+        
+       
+        
+        
+        
         if (response.alerts.length > 0) {
-          alertContainer.innerText =
-            response.alerts[0]?.severity + ": " + response.alerts[0]?.title;
-          // let h1 = `<h1>This is h1 heading</h1>
-          //         <h2>I am H2 </h2>`;
-          // alertContainer.innerHTML = h1;
+            alertContainer.innerText =
+            response.alerts[0].severity + ": " + response.alerts[0].title;
           alertContainer.classList.add("warning");
         }
         if (response.alerts.length === 0) {
