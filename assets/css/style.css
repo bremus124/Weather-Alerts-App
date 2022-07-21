@@ -8,11 +8,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: white;
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
 }
 
 body {
-  font-family:Bebas Neue;
+  font-family: Bebas Neue;
   font-size: 18px;
   color: rgb(104, 104, 104);
 }
@@ -22,12 +22,16 @@ body {
   width: 100%;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), rgba(7, 37, 89, 0.73)),url(../images/1.jpg);
+  background-image: linear-gradient(
+      to top,
+      rgba(245, 246, 252, 0.52),
+      rgba(7, 37, 89, 0.73)
+    ),
+    url(../images/1.jpg);
   margin-bottom: 20px;
   opacity: 0.9;
   display: flexbox;
 
-  
   /*adding background to section
           and animation named color-change*/
   position: relative;
@@ -61,18 +65,17 @@ body {
     opacity: 1;
   }
 }
-#description{
-background-color: white;
-padding: 20px;
-list-style-type: none;
-text-align: center;
-font-family: ;
+#description {
+  background-color: white;
+  padding: 20px;
+  list-style-type: none;
+  text-align: center;
 }
 
 .conditions li {
-display: inline; 
-padding-left: 20px;
-padding-right: 20px;
+  display: inline;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 /* applying filter at different angle
     on diffrent interval using keyframe*/
@@ -82,13 +85,13 @@ padding-right: 20px;
   }
 }
 
-h1{
+h1 {
   font-size: 95px;
   text-align: center;
   margin-top: 0;
   padding-top: 70px;
   color: white;
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
 }
 #searchInput {
   width: 70%;
@@ -100,7 +103,7 @@ h1{
   font-family: "monospace", sans-serif;
   font-size: 18px;
   border-radius: 2px;
-  margin-left:100px;
+  margin-left: 100px;
   background-color: white;
 }
 
@@ -177,7 +180,16 @@ img.powered-by-google {
   color: #28252e;
   margin: 20px auto;
   padding: 10px;
-  background-color: yellow;
+  background: yellow;
+}
+
+.advisory {
+  text-align: center;
+  max-width: 600px;
+  color: #28252e;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #7dd87d;
 }
 
 .no-warning {
