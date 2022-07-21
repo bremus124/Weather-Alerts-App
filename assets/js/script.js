@@ -30,15 +30,13 @@ function initMap() {
     localStorage.setItem("searchHistory", JSON.stringify(searches));
     localStorage.setItem("place", place.formatted_address);
     if (!place.geometry) {
-
-      var elem = document.querySelector('.modal');
+      var elem = document.querySelector(".modal");
       var instance = M.Modal.init(elem, {});
       instance.open();
       // window.alert("Autocomplete's returned place contains no geometry");
       return;
 
-    // modal instead of alert
-    
+      // modal instead of alert
     }
 
     // If the place has a geometry, then present it on a map.
@@ -110,15 +108,23 @@ function initMap() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        
-       
-        
-        
-        
+
         if (response.alerts.length > 0) {
-            alertContainer.innerText =
-            response.alerts[0].severity + ": " + response.alerts[0].title;
-          alertContainer.classList.add("warning");
+          //passing a function as an argument to the map function
+          //How many times map function will run depends on the length of the array
+          response.alerts.map(function (alert) {
+            let para = document.createElement("p");
+
+            if (alert.severity === "Advisory" || alert.severity === "Watch") {
+              para.innerText = alert.severity + ": " + alert.title;
+              para.classList.add("advisory");
+            }
+            if (alert.severity === "Warning") {
+              para.innerText = alert.severity + ": " + alert.title;
+              para.classList.add("warning");
+            }
+            alertContainer.appendChild(para);
+          });
         }
         if (response.alerts.length === 0) {
           alertContainer.innerText = "There area no alerts in this area";
@@ -142,12 +148,12 @@ recentSearches = `${searches.slice(0, 3).map((search) => {
   return recentSearches;
 })}`;
 
-var pastSearchHandler = function(event){
-  var city = event.target.getAttribute("city")
-  if(city){
-      getCityWeather(city);
-      get5Day(city);
+var pastSearchHandler = function (event) {
+  var city = event.target.getAttribute("city");
+  if (city) {
+    getCityWeather(city);
+    get5Day(city);
   }
-}
+};
 
 window.initMap = initMap;
