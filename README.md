@@ -18,7 +18,7 @@
 
 ## Authors
 
-- [@brittanyremus](https://www.github.com/bremus124)
-- [@JakePerry](https://github.com/jmp2814)
-- [@OlesiaChugaieva](https://github.com/OlesiaChugaieva)
+- [@Brittany Remus](https://www.github.com/bremus124)
+- [@Jake Perry](https://github.com/jmp2814)
+- [@Olesia Chugaieva](https://github.com/OlesiaChugaieva)
 - [@Nneka Eboagwu](https://github.com/neksebo)
